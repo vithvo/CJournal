@@ -1,0 +1,39 @@
+.menu {
+  position: fixed;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+
+  ul {
+    padding: 0;
+    margin: 0;
+    padding-left: 8px;
+    button {
+      width: 100%;
+      height: 44px;
+      display: flex;
+      justify-content: flex-start;
+      font-size: 16px;
+      line-height: 16px;
+      font-style: normal;
+
+      letter-spacing: 0;
+      text-transform: inherit;
+      font-weight: normal;
+      align-items: center;
+      padding: 10px 0 10px 6px;
+      svg {
+        height: 24px;
+        width: 24px;
+        margin-right: 10px;
+      }
+
+      &:hover {
+        background-color: #fff;
+      }
+    }
+    li {
+      display: flex;
+    }
+  }
+}

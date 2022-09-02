@@ -1,0 +1,44 @@
+.root {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff4e2;
+  align-items: center;
+  height: 60px;
+  margin-bottom: 11px;
+  svg {
+    color: black;
+  }
+  z-index: 100;
+}
+.burgerLogo {
+  min-width: 55px;
+}
+.headerLogo {
+  width: 30px;
+  height: 40px;
+  margin-right: 40px;
+}
+
+.headerLeft {
+  align-items: center;
+  display: flex;
+  // flex: 1;
+}
+.headerRight {
+  align-items: center;
+  display: flex;
+  margin-right: 55px;
+  // flex: 1;
+}
+
+.headerAvatar {
+  margin-left: 35px;
+  margin-right: 2px;
+}
+.headerNotification {
+  margin-left: 35px;
+}
+
