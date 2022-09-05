@@ -1,13 +1,22 @@
+.leftSideRow {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+	height: 100vh;
+}
+
 .menu {
   position: fixed;
   left: 0;
-  width: 200px;
+  width: 220px;
   height: 100vh;
 
   ul {
     padding: 0;
     margin: 0;
-    padding-left: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
     button {
       width: 100%;
       height: 44px;
@@ -16,16 +25,17 @@
       font-size: 16px;
       line-height: 16px;
       font-style: normal;
-
+      margin-bottom: 3px;
       letter-spacing: 0;
       text-transform: inherit;
       font-weight: normal;
       align-items: center;
-      padding: 10px 0 10px 6px;
+      padding: 12px 0 12px 6px;
       svg {
         height: 24px;
         width: 24px;
-        margin-right: 10px;
+        margin-right: 12px;
+        margin-left: 4px;
       }
 
       &:hover {

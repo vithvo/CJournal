@@ -2,7 +2,8 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { Header } from "../components/Header";
 import { LeftSide } from "../components/LeftSide";
-import { Post } from "../components/Post/Post";
+import { Post } from "../components/Post";
+import { RightSide } from "../components/RightSide";
 
 const Home: NextPage = () => {
   return (
@@ -23,10 +24,13 @@ const Home: NextPage = () => {
         </Head>
       </div>
       <Header />
-
-      <LeftSide />
-      <Post />
-      <div className="rightSide"></div>
+      <div className="contentRow">
+        <LeftSide />
+        <div className="postRow">
+          <Post />
+        </div>
+        <RightSide />
+      </div>
     </>
   );
 };

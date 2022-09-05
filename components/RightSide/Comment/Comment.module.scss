@@ -1,0 +1,33 @@
+.commentItem {
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  .commentHeader {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    text-transform: inherit;
+		height: 40px;
+		margin-bottom: 10px;
+    .commentAvarar {
+      height: 30px;
+      width: 30px;
+      font-size: 20px;
+      font-weight: 200;
+      margin-right: 10px;
+      align-items: center;
+    }
+  }
+
+  .commentContent {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 22px;
+    margin-bottom: 5px;
+  }
+  .commentFooter {
+    font-size: 16px;
+  }
+}

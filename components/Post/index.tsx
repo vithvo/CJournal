@@ -8,15 +8,7 @@ import styles from "./Post.module.scss";
 export const Post = () => {
   return (
     <div className={styles.post}>
-      <div className={styles.postTop}>
-        <div className={styles.searchBox}>
-          <Search />
-          <input type="text" placeholder="Поиск" />
-        </div>
-        <Button className={styles.headerPenButton} variant="contained">
-          <AddOutlined /> Создать
-        </Button>
-      </div>
+     
       <Paper elevation={0} className="p-20" classes={{ root: styles.paper }}>
         <Typography variant="h5" className={styles.title}>
           55 стран за три года: моя работа бортпроводницей в религиозном Катаре

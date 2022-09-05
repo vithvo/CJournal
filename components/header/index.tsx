@@ -1,10 +1,11 @@
 import React from "react";
 import {
-  EditOutlined,
   SmsOutlined,
   NotificationsNone,
   MenuOutlined,
   KeyboardArrowDown,
+	Search,
+	AddOutlined,
 } from "@mui/icons-material";
 import { Avatar, Button, Paper } from "@mui/material";
 
@@ -18,8 +19,15 @@ export const Header: React.FC = () => {
           <MenuOutlined />
         </Button>
         <img className={styles.headerLogo} src="static/logo.svg" alt="LOGO" />
-
-        
+      </div>
+      <div className={styles.postTop}>
+        <div className={styles.searchBox}>
+          <Search />
+          <input type="text" placeholder="Поиск" />
+        </div>
+        <Button className={styles.headerPenButton} variant="contained">
+          <AddOutlined  /> Создать
+        </Button>
       </div>
       <div className={styles.headerRight}>
         <SmsOutlined className={styles.headerSms} />
@@ -29,7 +37,7 @@ export const Header: React.FC = () => {
           alt="Remy Sharp"
           src="https://avatarko.ru/img/avatar/2/zhivotnye_igra_kot_1816.jpg"
         />
-        <KeyboardArrowDown />
+        <KeyboardArrowDown className={styles.headerAvatarIcon} />
       </div>
     </Paper>
   );

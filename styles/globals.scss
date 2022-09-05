@@ -26,3 +26,8 @@ a {
     background: #f2f2f2;
   }
 }
+.contentRow {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}

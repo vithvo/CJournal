@@ -1,7 +1,9 @@
 .post {
   max-width: 640px;
-
+  width: 100%;
   margin: 0 auto;
+	position: relative;
+
 }
 
 .postImageRow {
@@ -17,60 +19,10 @@
   font-weight: 500 !important;
   letter-spacing: -0.1px !important;
   font-size: 22px;
-	
 }
 
 .paper {
   border-radius: 8px;
 }
 
-.postTop {
-  position: fixed;
-  top: 9px;
-  display: flex;
-  justify-content: space-between;
-  max-width: 640px;
-  width: 100%;
-  z-index: 150;
-}
-.searchBox {
-  display: flex;
-  align-items: center;
-  margin-right: 15px;
 
-  svg {
-    position: absolute;
-    top: 8px;
-    left: 10px;
-    opacity: 0.3;
-  }
-  input {
-    width: 377px;
-    height: 42px;
-    border: 0;
-    border-radius: 7px;
-    background-color: #ffeace;
-    font-family: Roboto;
-    font-size: 16px;
-    padding-left: 40px;
-    transition: all 0.3s ease-in-out;
-    border: 1px solid transparent;
-
-    &:hover {
-      background-color: #ffffff;
-      border-color: darken(#fff4e2, 15%);
-      box-shadow: 0 0 0 3px rgb(229 160 64 / 12%);
-    }
-  }
-}
-.headerPenButton {
-  height: 40px;
-  max-width: 250px !important;
-  text-transform: inherit;
-  letter-spacing: 0;
-  font-size: 15px;
-  padding: 6px 12px 6px 10px;
-  svg {
-    margin-right: 7px;
-  }
-}

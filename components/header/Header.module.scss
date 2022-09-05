@@ -7,7 +7,7 @@
   background-color: #fff4e2;
   align-items: center;
   height: 60px;
-  margin-bottom: 11px;
+  margin-bottom: 12px;
   svg {
     color: black;
   }
@@ -15,6 +15,9 @@
 }
 .burgerLogo {
   min-width: 55px;
+  &:hover {
+    background-color: transparent;
+  }
 }
 .headerLogo {
   width: 30px;
@@ -23,6 +26,8 @@
 }
 
 .headerLeft {
+  max-width: 220px;
+  width: 100%;
   align-items: center;
   display: flex;
   // flex: 1;
@@ -30,15 +35,74 @@
 .headerRight {
   align-items: center;
   display: flex;
-  margin-right: 55px;
+  max-width: 320px;
+  width: 100%;
+  justify-content: end;
+	padding-right: 38px;
   // flex: 1;
 }
 
 .headerAvatar {
   margin-left: 35px;
-  margin-right: 2px;
+  margin-right: 4px;
 }
 .headerNotification {
   margin-left: 35px;
 }
 
+.headerAvatarIcon {
+  height: 20px;
+}
+
+.postTop {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  max-width: 640px;
+  width: 100%;
+  z-index: 150;
+  align-items: center;
+}
+.searchBox {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+
+  position: relative;
+  svg {
+    position: absolute;
+
+    left: 10px;
+    opacity: 0.3;
+  }
+  input {
+    width: 380px;
+    height: 44px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #ffeace;
+    font-family: Roboto;
+    font-size: 16px;
+    padding-left: 40px;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid transparent;
+
+    &:hover {
+      background-color: #ffffff;
+      border-color: darken(#fff4e2, 15%);
+      box-shadow: 0 0 0 3px rgb(229 160 64 / 12%);
+    }
+  }
+}
+.headerPenButton {
+  width: 115px;
+  height: 40px;
+  max-width: 250px !important;
+  text-transform: inherit;
+  letter-spacing: 0;
+  font-size: 15px;
+  padding: 6px 12px 6px 10px;
+  svg {
+    margin-right: 7px;
+  }
+}

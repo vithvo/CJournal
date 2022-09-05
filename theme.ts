@@ -12,6 +12,9 @@ export const theme = createTheme({
           span: {
             display: "none",
           },
+          "&:hover": {
+            backgroundColor: "transparent",
+          },
         },
         contained: {
           // Some CSS
