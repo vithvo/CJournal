@@ -15,6 +15,7 @@
 }
 .burgerLogo {
   min-width: 55px;
+  cursor: pointer;
   &:hover {
     background-color: transparent;
   }
@@ -23,6 +24,7 @@
   width: 30px;
   height: 40px;
   margin-right: 40px;
+  cursor: pointer;
 }
 
 .headerLeft {
@@ -38,20 +40,28 @@
   max-width: 320px;
   width: 100%;
   justify-content: end;
-	padding-right: 38px;
+  padding-right: 38px;
   // flex: 1;
+}
+
+.headerSms {
+  cursor: pointer;
 }
 
 .headerAvatar {
   margin-left: 35px;
   margin-right: 4px;
+  cursor: pointer;
+  border-radius: 6px;
 }
 .headerNotification {
   margin-left: 35px;
+  cursor: pointer;
 }
 
 .headerAvatarIcon {
   height: 20px;
+  cursor: pointer;
 }
 
 .postTop {

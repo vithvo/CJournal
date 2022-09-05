@@ -2,13 +2,13 @@
   max-width: 640px;
   width: 100%;
   margin: 0 auto;
-	position: relative;
-
+  position: relative;
+  margin-bottom: 25px;
 }
 
 .postImageRow {
   position: relative;
-  margin: 0 -20px;
+  margin: 0 -15px;
 }
 
 .postImage {
@@ -19,10 +19,46 @@
   font-weight: 500 !important;
   letter-spacing: -0.1px !important;
   font-size: 22px;
+  cursor: pointer;
 }
 
 .paper {
   border-radius: 8px;
 }
 
+.postFooter {
+  width: 100%;
+  ul {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+  }
+  li {
+    display: flex;
+    align-items: center;
+    margin-right: 33px;
+    font-size: 15px;
+    button {
+      padding: 0;
+    }
+    svg {
+      height: 21px;
+      width: 21px;
 
+      fill: #595959;
+      path {
+    
+        fill: #595959;
+      }
+    }
+    &:first-child {
+      p {
+        margin: 0;
+      }
+      svg {
+        margin-right: 5px;
+        margin-left: 5px;
+      }
+    }
+  }
+}

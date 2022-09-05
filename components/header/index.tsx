@@ -4,12 +4,13 @@ import {
   NotificationsNone,
   MenuOutlined,
   KeyboardArrowDown,
-	Search,
-	AddOutlined,
+  Search,
+  AddOutlined,
 } from "@mui/icons-material";
 import { Avatar, Button, Paper } from "@mui/material";
 
 import styles from "./Header.module.scss";
+import Link from "next/link";
 
 export const Header: React.FC = () => {
   return (
@@ -18,7 +19,9 @@ export const Header: React.FC = () => {
         <Button className={styles.burgerLogo}>
           <MenuOutlined />
         </Button>
-        <img className={styles.headerLogo} src="static/logo.svg" alt="LOGO" />
+        <Link href="/">
+          <img className={styles.headerLogo} src="/static/logo.svg" alt="LOGO" />
+        </Link>
       </div>
       <div className={styles.postTop}>
         <div className={styles.searchBox}>
@@ -26,17 +29,19 @@ export const Header: React.FC = () => {
           <input type="text" placeholder="Поиск" />
         </div>
         <Button className={styles.headerPenButton} variant="contained">
-          <AddOutlined  /> Создать
+          <AddOutlined /> Создать
         </Button>
       </div>
       <div className={styles.headerRight}>
         <SmsOutlined className={styles.headerSms} />
         <NotificationsNone className={styles.headerNotification} />
-        <Avatar
-          className={styles.headerAvatar}
-          alt="Remy Sharp"
-          src="https://avatarko.ru/img/avatar/2/zhivotnye_igra_kot_1816.jpg"
-        />
+        <Link href="/profile/1">
+          <Avatar
+            className={styles.headerAvatar}
+            alt="Avatar"
+            src="https://avatarko.ru/img/avatar/2/zhivotnye_igra_kot_1816.jpg"
+          />
+        </Link>
         <KeyboardArrowDown className={styles.headerAvatarIcon} />
       </div>
     </Paper>
