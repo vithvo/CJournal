@@ -8,22 +8,26 @@ import { RightSide } from "../components/RightSide";
 interface MainLayoutProps {
   children: React.ReactNode;
   hideComments?: boolean;
+  hideMenu?: boolean;
   contentFullWidth?: boolean;
+  className?: string;
 }
 
 export const MainLayout: React.FC<MainLayoutProps> = ({
   children,
   hideComments,
   contentFullWidth,
+  hideMenu,
+  className,
 }) => {
   return (
-    <>
+    <div className={clsx(className)}>
       <Header />
       <div className="contentRow">
-        <LeftSide />
+        {!hideMenu && <LeftSide />}
         <div className={clsx("postRow", { "postRow--full": contentFullWidth })}>{children}</div>
         {!hideComments && <RightSide />}
       </div>
-    </>
+    </div>
   );
 };

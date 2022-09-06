@@ -22,11 +22,10 @@ a {
   color: black;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #f2f2f2;
-  }
+body {
+  background: #f2f2f2;
 }
+
 .contentRow {
   display: flex;
   flex-wrap: nowrap;
@@ -38,4 +37,11 @@ a {
     width: 100%;
     justify-content: start;
   }
+}
+
+
+
+.main-layout-white {
+  background-color: #fff !important;
+  height: 100vh;
 }

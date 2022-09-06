@@ -8,6 +8,7 @@ const Home: NextPage = () => {
     <MainLayout>
       <Post />
       <Post />
+      <Post />
     </MainLayout>
   );
 };

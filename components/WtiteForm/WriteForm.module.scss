@@ -1,0 +1,21 @@
+.writeRow {
+  max-width: 730px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.titleField {
+  &::after,
+  &::before {
+    display: none;
+  }
+  input {
+    font-size: 36px !important;
+    font-weight: 600;
+  }
+  margin-bottom: 10px;
+}
+
+.editor {
+  font-size: 18px;
+}

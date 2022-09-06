@@ -14,7 +14,6 @@ import Link from "next/link";
 const menu = [
   { text: "Популярное", icon: <WhatshotOutlined />, path: "/" },
   { text: "Сообщения", icon: <MarkChatReadOutlined />, path: "/messages" },
-  { text: "Закдажки", icon: <BookmarkBorderOutlined />, path: "/favorites" },
   { text: "Рейтинг TJ", icon: <TrendingUpOutlined />, path: "/rating" },
   { text: "Подписки", icon: <FormatListBulletedOutlined />, path: "/follows" },
 ];

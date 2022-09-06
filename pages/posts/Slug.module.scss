@@ -1,4 +1,49 @@
 .slugRow {
   margin-top: -12px;
+  margin-bottom: 50px;
 }
 
+.divider {
+  margin: 0 -30px 20px;
+}
+
+.form {
+  position: relative;
+}
+
+.textarea {
+  cursor: default;
+  display: flex;
+  margin: 30px auto;
+  width: 600px;
+  height: 103px;
+  font-size: inherit;
+  background-color: #f7f7f7;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  padding: 12px 11px 11px;
+  border-radius: 10px;
+  resize: none;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    background-color: #fff;
+    border-color: #bdd6fa;
+    box-shadow: 0 0 0 3px rgb(70 131 217 / 12%);
+  }
+}
+.button {
+  background-color: #9fbde8;
+  color: #fff;
+  min-width: 113px;
+  height: 40px;
+  font-size: 16px;
+  position: absolute;
+  right: 61px;
+  bottom: 12px;
+  &:disabled {
+    background-color: #9fbde8;
+    color: #fff;
+  }
+  &:hover {
+    background-color: #9fbde8;
+  }
+}
