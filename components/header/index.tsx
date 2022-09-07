@@ -3,16 +3,26 @@ import {
   SmsOutlined,
   NotificationsNone,
   MenuOutlined,
-  KeyboardArrowDown,
   Search,
   AddOutlined,
+  PersonOutlineRounded,
 } from "@mui/icons-material";
 import { Avatar, Button, Paper } from "@mui/material";
 
 import styles from "./Header.module.scss";
 import Link from "next/link";
+import { AuthDialog } from "../AuthDialog";
 
 export const Header: React.FC = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <Paper classes={{ root: styles.root }} elevation={0}>
       <div className={styles.headerLeft}>
@@ -37,15 +47,20 @@ export const Header: React.FC = () => {
       <div className={styles.headerRight}>
         <SmsOutlined className={styles.headerSms} />
         <NotificationsNone className={styles.headerNotification} />
-        <Link href="/profile/1">
+        {/* <Link href="/profile/1">
           <Avatar
             className={styles.headerAvatar}
             alt="Avatar"
             src="https://avatarko.ru/img/avatar/2/zhivotnye_igra_kot_1816.jpg"
           />
         </Link>
-        <KeyboardArrowDown className={styles.headerAvatarIcon} />
+        <KeyboardArrowDown className={styles.headerAvatarIcon} /> */}
+        <div onClick={handleClickOpen} className={styles.headerAvatar}>
+          <PersonOutlineRounded />
+          <span>Войти</span>
+        </div>
       </div>
+      <AuthDialog onClose={handleClose} open={open} />
     </Paper>
   );
 };

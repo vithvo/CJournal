@@ -42,6 +42,10 @@
   justify-content: end;
   padding-right: 38px;
   // flex: 1;
+  svg {
+    height: 30px;
+    width: 30px;
+  }
 }
 
 .headerSms {
@@ -49,13 +53,29 @@
 }
 
 .headerAvatar {
-  margin-left: 35px;
-  margin-right: 4px;
+  display: flex;
+  margin-left: 32px;
+  margin-right: 2px;
   cursor: pointer;
   border-radius: 6px;
+  align-items: center;
+  svg {
+    margin-right: 5px;
+  }
+  span {
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: normal;
+    font-weight: 500;
+  }
+  &:hover {
+    * {
+      color: #e5a040 !important;
+    }
+  }
 }
 .headerNotification {
-  margin-left: 35px;
+  margin-left: 32px;
   cursor: pointer;
 }
 
@@ -116,3 +136,5 @@
     margin-right: 7px;
   }
 }
+
+//===============================================DIALOG==============================================

@@ -3,13 +3,13 @@ import React from "react";
 import {
   WhatshotOutlined,
   MarkChatReadOutlined,
-  BookmarkBorderOutlined,
   TrendingUpOutlined,
   FormatListBulletedOutlined,
 } from "@mui/icons-material";
 
 import styles from "./LeftSide.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const menu = [
   { text: "Популярное", icon: <WhatshotOutlined />, path: "/" },
@@ -19,6 +19,10 @@ const menu = [
 ];
 
 export const LeftSide = () => {
+  const router = useRouter();
+
+  console.log(router);
+
   return (
     <div className={styles.leftSideRow}>
       <div className={styles.menu}>
@@ -26,7 +30,7 @@ export const LeftSide = () => {
           {menu.map((obj) => (
             <li key={obj.path}>
               <Link href={obj.path}>
-                <Button>
+                <Button variant={router.asPath === obj.path ? "contained" : "text"}>
                   {obj.icon}
                   {obj.text}
                 </Button>

@@ -1,0 +1,131 @@
+.login {
+  margin: auto;
+}
+
+.loginContent {
+  height: 600px;
+  width: 640px;
+  padding: 0;
+}
+.loginContentText {
+  display: flex;
+}
+
+.leftLogin {
+  width: 212px;
+  height: 600px;
+  background-image: url("https://leonardo.osnova.io/b6bd61b5-eb5b-34db-8501-2fcc54cd051b/-/format/webp/");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  padding: 20px 20px;
+  .headerLogo {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.rightLogin {
+  max-width: 428px;
+  width: 100%;
+  padding: 24px 50px;
+  margin: 0;
+  position: relative;
+  h5 {
+    font-size: 24px;
+    line-height: 36px;
+    margin-bottom: 16px;
+    margin-top: 114px;
+    font-weight: 500;
+  }
+  button {
+		position: relative;
+    height: 48px;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: normal;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 8%), inset 0 0 0 1px rgb(0 0 0 / 6%),
+      inset 0 -1px 0 rgb(0 0 0 / 12%), inset 1px 0 0 rgb(0 0 0 / 6%), inset -1px 0 0 rgb(0 0 0 / 6%);
+    margin-bottom: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    img {
+      height: 21px;
+      width: 21px;
+      position: absolute;
+      left: 13px;
+      border-radius: 5px;
+    }
+    svg {
+      position: absolute;
+      left: 12px;
+    }
+  }
+  .buttonFutter {
+    display: flex;
+    button {
+      width: 103px;
+      margin-right: 10px;
+      &:last-child {
+        margin-right: 0;
+      }
+      img {
+        position: static;
+      }
+    }
+  }
+}
+
+.close {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  cursor: pointer;
+}
+
+.back {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  opacity: 0.5;
+  letter-spacing: normal;
+  svg {
+    height: 17px;
+    width: 17px;
+    margin-right: 13px;
+  }
+}
+
+.textarea {
+  cursor: default;
+  display: flex;
+  margin-bottom: 16px;
+  width: 100%;
+  height: 49px;
+  font-size: inherit;
+  background-color: #f7f7f7;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  padding: 12px 11px 11px;
+  border-radius: 10px;
+
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #fff;
+    border-color: #bdd6fa;
+    box-shadow: 0 0 0 3px rgb(70 131 217 / 12%) !important;
+    padding: 12px 11px 11px;
+  }
+
+  &::after,
+  &::before {
+    display: none;
+  }
+}

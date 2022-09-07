@@ -1,4 +1,4 @@
-import { createTheme, linearProgressClasses } from "@mui/material";
+import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
   components: {
@@ -45,7 +45,7 @@ export const theme = createTheme({
         contained: {
           // Some CSS
           transition: "all 0s linear",
-          maxWidth: "40px",
+          // maxWidth: "40px",
           backgroundColor: "white",
           boxShadow: "inset 0 -1px 0 0 rgb(0 0 0 / 6%), 0 2px 2px 0 rgb(0 0 0 / 6%)",
           "&:hover": {
@@ -56,6 +56,16 @@ export const theme = createTheme({
             boxShadow: "inset 0 -1px 0 0 rgb(0 0 0 / 6%), 0 0 1px 0 rgb(0 0 0 / 4%);",
             filter: "brightness(1)",
           },
+        },
+      },
+    },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          boxShadow: "none",
+          margin: "0",
+          maxWidth: "640px",
+          borderRadius: "8px",
         },
       },
     },
