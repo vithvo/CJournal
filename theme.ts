@@ -41,6 +41,7 @@ export const theme = createTheme({
           },
           disableRipple: true,
         },
+
         contained: {
           // Some CSS
           transition: "all 0s linear",

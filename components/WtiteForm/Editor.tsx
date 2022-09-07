@@ -3,7 +3,7 @@ import EditorJS from "@editorjs/editorjs";
 
 export const Editor: React.FC = ({}) => {
   useEffect(() => {
-    const editor = new EditorJS({ holder: "editor" });
+    const editor = new EditorJS({ holder: "editor", placeholder: "Введите текст вашей статьи" });
     return () => {
       editor.isReady
         .then(() => {

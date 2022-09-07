@@ -4,20 +4,27 @@ import React from "react";
 
 import styles from "./Comment.module.scss";
 
-export const Comment = () => {
+export interface CommentPostProps {
+  text: string;
+  id: number;
+  createdAt: string;
+  user: {
+    fullname: string;
+    avatarUrl: string;
+  };
+}
+
+export const Comment: React.FC<CommentPostProps> = ({ user, text, createdAt }) => {
   return (
     <div className={styles.row}>
       <div className={styles.title}>
-        <img src="https://avatarko.ru/img/avatar/2/zhivotnye_igra_kot_1816.jpg" alt="Avatar" />
+        <img src={user.avatarUrl} alt="Avatar" />
         <div className={styles.titleText}>
-          <b>Вакулий Шныряев</b>
-          <span>5 часов </span>
+          <b>{user.fullname}</b>
+          <span>{createdAt}</span>
         </div>
       </div>
-      <Typography className={styles.text}>
-        это деревня на пару тысяч человек. скорее всего, они просто ходили по улице и выцепляли по
-        одному человеку, а не в толпу просто бросились
-      </Typography>
+      <Typography className={styles.text}>{text}</Typography>
       <div className="d-flex align-center">
         <Button className={styles.button}>Ответить</Button>
         <Button className={(styles.button, styles.buttonDots)}>

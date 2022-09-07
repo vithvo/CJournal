@@ -2,6 +2,7 @@
   max-width: 730px;
   width: 100%;
   margin: 0 auto;
+  position: relative;
 }
 
 .titleField {
@@ -18,4 +19,6 @@
 
 .editor {
   font-size: 18px;
+  margin-left: -77px;
+  height: calc(100vh - 220px);
 }

@@ -28,9 +28,11 @@ export const Header: React.FC = () => {
           <Search />
           <input type="text" placeholder="Поиск" />
         </div>
-        <Button className={styles.headerPenButton} variant="contained">
-          <AddOutlined /> Создать
-        </Button>
+        <Link href="/write">
+          <Button className={styles.headerPenButton} variant="contained">
+            <AddOutlined /> Создать
+          </Button>
+        </Link>
       </div>
       <div className={styles.headerRight}>
         <SmsOutlined className={styles.headerSms} />
