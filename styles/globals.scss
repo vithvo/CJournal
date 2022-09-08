@@ -39,9 +39,15 @@ body {
   }
 }
 
-
-
 .main-layout-white {
   background-color: #fff !important;
   height: 100vh;
 }
+
+input {
+  &:hover {
+    border: none;
+  }
+}
+
+

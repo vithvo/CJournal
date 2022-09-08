@@ -17,7 +17,7 @@ export default function Settings() {
             fullWidth
             size="small"
             className="mb-20"
-            id="outlined-basic"
+      
             label="Отображаемое имя"
             variant="outlined"
           />

@@ -7,43 +7,44 @@ import { CommentSide } from "./CommentSide";
 
 import styles from "./RightSide.module.scss";
 import clsx from "clsx";
+import { commetsItems } from "../../data";
 // import CommentPostProps from "../Comment";
 
-const comments = [
-  {
-    id: 1,
-    user: {
-      fullname: "Вася Пупкин",
-      avatarUrl: "https://thumbs.dreamstime.com/b/cat-avatar-illustration-cartoon-45383590.jpg",
-    },
-    text: "Теперь, каждое рабочее утро, после кровати, я перекладываюсь туда спать ещё на часок. Ну и…",
-    post: {
-      title: "Какая у вас дома ванна?",
-    },
-  },
-  {
-    id: 2,
-    user: {
-      fullname: "Вася Пупкин",
-      avatarUrl: "https://thumbs.dreamstime.com/b/cat-avatar-illustration-cartoon-45383590.jpg",
-    },
-    text: "Теперь, каждое рабочее утро, после кровати, я перекладываюсь туда спать ещё на часок. Ну и…",
-    post: {
-      title: "Какая у вас дома ванна?",
-    },
-  },
-  {
-    id: 3,
-    user: {
-      fullname: "Вася Пупкин",
-      avatarUrl: "https://thumbs.dreamstime.com/b/cat-avatar-illustration-cartoon-45383590.jpg",
-    },
-    text: "Теперь, каждое рабочее утро, после кровати, я перекладываюсь туда спать ещё на часок. Ну и…",
-    post: {
-      title: "Какая у вас дома ванна?",
-    },
-  },
-];
+// const comments = [
+//   {
+//     id: 1,
+//     user: {
+//       fullname: "Вася Пупкин",
+//       avatarUrl: "https://thumbs.dreamstime.com/b/cat-avatar-illustration-cartoon-45383590.jpg",
+//     },
+//     text: "Теперь, каждое рабочее утро, после кровати, я перекладываюсь туда спать ещё на часок. Ну и…",
+//     post: {
+//       title: "Какая у вас дома ванна?",
+//     },
+//   },
+//   {
+//     id: 2,
+//     user: {
+//       fullname: "Вася Пупкин",
+//       avatarUrl: "https://thumbs.dreamstime.com/b/cat-avatar-illustration-cartoon-45383590.jpg",
+//     },
+//     text: "Теперь, каждое рабочее утро, после кровати, я перекладываюсь туда спать ещё на часок. Ну и…",
+//     post: {
+//       title: "Какая у вас дома ванна?",
+//     },
+//   },
+//   {
+//     id: 3,
+//     user: {
+//       fullname: "Вася Пупкин",
+//       avatarUrl: "https://thumbs.dreamstime.com/b/cat-avatar-illustration-cartoon-45383590.jpg",
+//     },
+//     text: "Теперь, каждое рабочее утро, после кровати, я перекладываюсь туда спать ещё на часок. Ну и…",
+//     post: {
+//       title: "Какая у вас дома ванна?",
+//     },
+//   },
+// ];
 
 export const RightSide: React.FC = ({}) => {
   const [visible, setVisible] = useState(true);
@@ -57,8 +58,14 @@ export const RightSide: React.FC = ({}) => {
         </Button>
         {visible && (
           <div className={styles.rightSideContent}>
-            {comments.map((item) => (
-              <CommentSide key={item.id} user={item.user} text={item.text} post={item.post} />
+            {commetsItems.popular.map((item) => (
+              <CommentSide
+                key={item.id}
+                {...item}
+                user={item.user}
+                text={item.text}
+                post={item.post}
+              />
             ))}
           </div>
         )}

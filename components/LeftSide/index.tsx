@@ -21,8 +21,6 @@ const menu = [
 export const LeftSide = () => {
   const router = useRouter();
 
-  console.log(router);
-
   return (
     <div className={styles.leftSideRow}>
       <div className={styles.menu}>

@@ -53,7 +53,7 @@ export const theme = createTheme({
             boxShadow: "inset 0 -1px 0 0 rgb(0 0 0 / 6%), 0 2px 1px 0 rgb(0 0 0 / 10%)",
           },
           "&:active": {
-            boxShadow: "inset 0 -1px 0 0 rgb(0 0 0 / 6%), 0 0 1px 0 rgb(0 0 0 / 4%);",
+            boxShadow: "inset 0 -1px 0 0 rgb(0 0 0 / 6%), 0 0 1px 0 rgb(0 0 0 / 4%),",
             filter: "brightness(1)",
           },
         },
