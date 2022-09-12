@@ -11,7 +11,7 @@ export interface CommentPostProps {
   createdAt: string;
   user: {
     id: number;
-    fullname: string;
+    fullName: string;
     avatarUrl: string;
   };
 }
@@ -23,7 +23,7 @@ export const Comment: React.FC<CommentPostProps> = ({ user, text, createdAt }) =
         <div className={styles.title}>
           <img src={user.avatarUrl} alt="Avatar" />
           <div className={styles.titleText}>
-            <b>{user.fullname}</b>
+            <b>{user.fullName}</b>
             <span>{createdAt}</span>
           </div>
         </div>

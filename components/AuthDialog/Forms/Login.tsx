@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Alert, Button, Typography } from "@mui/material";
 import { ArrowBackIosNewRounded } from "@mui/icons-material";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,15 +7,39 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "../AuthDialog.module.scss";
 import { LoginSchema } from "../../../utils/validations";
 import { FormField } from "../../WtiteForm/FormField";
+import { UserApi } from "../../../utils/api";
+import { setCookie } from "nookies";
+import { useAppDispatch } from "../../../redux/hooks";
+import { setUserData } from "../../../redux/slices/user";
 
 interface LoginProps {
   setFormTypeMain: () => void;
   setFormTypeRegistr: () => void;
+  onClose: () => void;
 }
 
 export const Login: React.FC<LoginProps> = ({ setFormTypeMain, setFormTypeRegistr }) => {
-  const form = useForm({ resolver: yupResolver(LoginSchema), mode: "onSubmit" });
-  const onSubmit = (data: {}) => console.log(data);
+  const dispatch = useAppDispatch();
+
+  const form = useForm({ resolver: yupResolver(LoginSchema), mode: "onChange" });
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const onSubmit = async (dto: any) => {
+    try {
+      const data = await UserApi.login(dto);
+
+      setCookie(null, "token", data.token, {
+        maxAge: 30 * 24 * 60 * 60,
+        path: "/",
+      });
+      setErrorMessage("");
+      dispatch(setUserData(data));
+    } catch (error: any) {
+      console.warn("Ошибка при регистрации", error);
+
+      setErrorMessage(error.response.data.message);
+    }
+  };
 
   return (
     <div className={styles.rightLogin}>
@@ -28,10 +52,15 @@ export const Login: React.FC<LoginProps> = ({ setFormTypeMain, setFormTypeRegist
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <FormField holder="Почта" name="email" />
           <FormField holder="Пароль" name="password" />
-
+          {errorMessage && (
+            <Alert className="mb-15" severity="error">
+              {errorMessage}
+            </Alert>
+          )}
           <Button
+            disabled={!form.formState.isValid || form.formState.isSubmitting}
             type="submit"
-            style={{ backgroundColor: "#A3C1EC", color: "#fff" }}
+            className={styles.inButton}
             fullWidth
             variant="contained"
           >

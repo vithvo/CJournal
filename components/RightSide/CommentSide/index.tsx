@@ -10,7 +10,7 @@ interface CommentSideProps {
   id: number;
   user: {
     id: number;
-    fullname: string;
+    fullName: string;
     avatarUrl: string;
   };
   post: {
@@ -30,9 +30,9 @@ export const CommentSide: React.FC<CommentSideProps> = ({ user, text, post }) =>
             variant="rounded"
             alt="Remy Sharp"
           >
-            {user.fullname.substr(0, 1)}
+            {user.fullName.substr(0, 1)}
           </Avatar>
-          <p>{user.fullname}</p>
+          <p>{user.fullName}</p>
         </Button>
       </Link>
       <div className={styles.commentContent}>{text}</div>

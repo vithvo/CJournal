@@ -1,7 +1,11 @@
-import type { NextPage } from "next";
-import Head from "next/head";
+import { stepperClasses } from "@mui/material";
+import type { GetServerSideProps, NextPage } from "next";
+import { parseCookies } from "nookies";
 import { Post } from "../components/Post";
 import { MainLayout } from "../layuots/MainLayout";
+import { setUserData } from "../redux/slices/user";
+import { wrapper } from "../redux/store";
+import { UserApi } from "../utils/api";
 
 const Home: NextPage = () => {
   return (
@@ -12,5 +16,22 @@ const Home: NextPage = () => {
     </MainLayout>
   );
 };
+
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
+  (store) => async (ctx) => {
+    try {
+      const { token } = parseCookies(ctx);
+
+      const userData = await UserApi.getMe(token);
+
+      store.dispatch(setUserData(userData));
+
+      return { props: {} };
+    } catch (error) {
+      console.log(error);
+      return { props: {} };
+    }
+  }
+);
 
 export default Home;

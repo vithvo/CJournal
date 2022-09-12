@@ -1,12 +1,14 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { theme } from "../theme";
 import Head from "next/head";
-
+import { Provider } from "react-redux";
 import type { AppProps } from "next/app";
-import "../styles/globals.scss";
-import "macro-css";
 
-function MyApp({ Component, pageProps }: AppProps) {
+import { theme } from "../theme";
+import { store, wrapper } from "../redux/store";
+import "macro-css";
+import "../styles/globals.scss";
+
+function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -24,10 +26,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+
         <Component {...pageProps} />
       </ThemeProvider>
     </>
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(App);

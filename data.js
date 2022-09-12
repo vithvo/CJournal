@@ -4,7 +4,7 @@ export const commetsItems = {
       id: 1,
       user: {
         id: 1,
-        fullname: "Вася Пупкин",
+        fullName: "Вася Пупкин",
         avatarUrl: "https://thumbs.dreamstime.com/b/cat-avatar-illustration-cartoon-45383590.jpg",
       },
       text: "Теперь, каждое рабочее утро, после кровати, я перекладываюсь туда спать ещё на часок. Ну и…",
@@ -18,7 +18,7 @@ export const commetsItems = {
       id: 2,
       user: {
         id: 1,
-        fullname: "Вася Пупкин",
+        fullName: "Вася Пупкин",
         avatarUrl: "https://thumbs.dreamstime.com/b/cat-avatar-illustration-cartoon-45383590.jpg",
       },
       text: "Теперь, каждое рабочее утро, после кровати, я перекладываюсь туда спать ещё на часок. Ну и…",
@@ -32,7 +32,7 @@ export const commetsItems = {
       id: 3,
       user: {
         id: 1,
-        fullname: "Вася Пупкин",
+        fullName: "Вася Пупкин",
         avatarUrl: "https://thumbs.dreamstime.com/b/cat-avatar-illustration-cartoon-45383590.jpg",
       },
       text: "Теперь, каждое рабочее утро, после кровати, я перекладываюсь туда спать ещё на часок. Ну и…",
@@ -48,7 +48,7 @@ export const commetsItems = {
       id: 3,
       user: {
         id: 1,
-        fullname: "Вася Пупкин",
+        fullName: "Вася Пупкин",
         avatarUrl: "https://thumbs.dreamstime.com/b/cat-avatar-illustration-cartoon-45383590.jpg",
       },
       text: "Теперь, каждое рабочее утро, после кровати, я перекладываюсь туда спать ещё на часок. Ну и…",

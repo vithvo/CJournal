@@ -29,6 +29,7 @@ export const AuthDialog: React.FC<AuthDialogPops> = ({ onClose, open }) => {
           )}
           {formType === "login" && (
             <Login
+              onClose={onClose}
               setFormTypeMain={() => setFormType("main")}
               setFormTypeRegistr={() => setFormType("registr")}
             />
