@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Alert, Button, Typography } from "@mui/material";
 import { ArrowBackIosNewRounded } from "@mui/icons-material";
 import { useForm, FormProvider } from "react-hook-form";
@@ -7,10 +7,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "../AuthDialog.module.scss";
 import { LoginSchema } from "../../../utils/validations";
 import { FormField } from "../../WtiteForm/FormField";
-import { UserApi } from "../../../utils/api";
 import { setCookie } from "nookies";
 import { useAppDispatch } from "../../../redux/hooks";
 import { setUserData } from "../../../redux/slices/user";
+import { Api } from "../../../utils/api";
 
 interface LoginProps {
   setFormTypeMain: () => void;
@@ -26,10 +26,10 @@ export const Login: React.FC<LoginProps> = ({ setFormTypeMain, setFormTypeRegist
 
   const onSubmit = async (dto: any) => {
     try {
-      const data = await UserApi.login(dto);
+      const data = await Api().user.login(dto);
 
       setCookie(null, "token", data.token, {
-        maxAge: 30 * 24 * 60 * 60,
+        maxAge: 30 * 24 * 60 * 60, 
         path: "/",
       });
       setErrorMessage("");

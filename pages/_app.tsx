@@ -7,6 +7,11 @@ import { theme } from "../theme";
 import { store, wrapper } from "../redux/store";
 import "macro-css";
 import "../styles/globals.scss";
+import { parseCookies } from "nookies";
+import { UserApi } from "../utils/api/user";
+import { setUserData } from "../redux/slices/user";
+import { Component } from "react";
+import { Api } from "../utils/api";
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -32,5 +37,24 @@ function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
+
+App.getInitialProps = wrapper.getInitialAppProps((store) => async ({ ctx, Component }) => {
+  try {
+    const userData = await Api(ctx).user.getMe();
+
+    store.dispatch(setUserData(userData));
+  } catch (error) {
+    if (ctx.asPath === "/write") {
+      ctx.res?.writeHead(302, { Location: "/403" });
+      ctx.res?.end();
+    }
+    console.log(error);
+  }
+  return {
+    pageProps: {
+      ...(Component.getInitialProps ? await Component.getInitialProps({ ...ctx, store }) : {}),
+    },
+  };
+});
 
 export default wrapper.withRedux(App);

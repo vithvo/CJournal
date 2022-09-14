@@ -1,37 +1,40 @@
-import { stepperClasses } from "@mui/material";
-import type { GetServerSideProps, NextPage } from "next";
-import { parseCookies } from "nookies";
+import type { NextPage } from "next";
 import { Post } from "../components/Post";
 import { MainLayout } from "../layuots/MainLayout";
-import { setUserData } from "../redux/slices/user";
-import { wrapper } from "../redux/store";
-import { UserApi } from "../utils/api";
+import { Api } from "../utils/api";
+import { PostProps } from "../utils/api/types";
 
-const Home: NextPage = () => {
+interface HomeProps {
+  posts: PostProps[];
+}
+
+const Home: NextPage<HomeProps> = ({ posts }) => {
+
   return (
     <MainLayout>
-      <Post />
-      <Post />
-      <Post />
+      {posts.map((obj) => (
+        <Post key={obj.id} id={obj.id} title={obj.title} description={obj.description} />
+      ))}
     </MainLayout>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
-  (store) => async (ctx) => {
-    try {
-      const { token } = parseCookies(ctx);
-
-      const userData = await UserApi.getMe(token);
-
-      store.dispatch(setUserData(userData));
-
-      return { props: {} };
-    } catch (error) {
-      console.log(error);
-      return { props: {} };
-    }
+export const getServerSideProps = async (ctx) => {
+  try {
+    const posts = await Api().post.getAll();
+    return {
+      props: {
+        posts,
+      },
+    };
+  } catch (err) {
+    console.log(err);
   }
-);
+  return {
+    props: {
+      posts: null,
+    },
+  };
+};
 
 export default Home;

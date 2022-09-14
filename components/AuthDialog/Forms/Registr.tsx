@@ -9,7 +9,7 @@ import { FormField } from "../../WtiteForm/FormField";
 import { RegistrSchema } from "../../../utils/validations";
 
 import styles from "../AuthDialog.module.scss";
-import { UserApi } from "../../../utils/api";
+import { UserApi } from "../../../utils/api/user";
 import { CreateUserDto } from "../../../utils/api/types";
 import { useAppDispatch } from "../../../redux/hooks";
 import {  setUserData } from "../../../redux/slices/user";

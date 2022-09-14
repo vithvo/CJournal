@@ -22,7 +22,7 @@ export const FormField: React.FC<FormFieldProps> = ({ name, holder }) => {
       name={name}
       InputProps={{ disableUnderline: true }}
       error={!!formState.errors[name]?.message}
-      helperText={formState.errors[name]?.message}
+      // helperText={formState.errors[name]?.message}
     />
   );
 };

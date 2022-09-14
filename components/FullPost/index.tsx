@@ -4,42 +4,24 @@ import { Button, Divider, Paper, Typography } from "@mui/material";
 import styles from "./FullPost.module.scss";
 import { PostActions } from "../PostActions";
 import { PersonAddAltOutlined, SmsOutlined } from "@mui/icons-material";
+import { OutputBlockData } from "@editorjs/editorjs";
 
-export const FullPost = () => {
+interface FullPostProps {
+  title: string;
+  blocks: OutputBlockData[];
+}
+
+export const FullPost: React.FC<FullPostProps> = ({ title, blocks }) => {
   return (
     <Paper elevation={0} className={styles.fullPost}>
       <div>
         <Typography className={styles.title} variant="h5">
-          Правительство обязало госорганы вести аккаунты в «Одноклассниках» или «ВКонтакте»
+          {title}
         </Typography>
-        <Typography>
-          С 1 декабря органам власти придётся выбрать хотя бы одну соцсеть, где будут публиковаться
-          отчёты с мероприятий и актуальная информация.
-        </Typography>
-        <Typography>
-          Премьер-министр Михаил Мишустин подписал распоряжение, по которому органы власти будут
-          обязаны вести аккаунты в российских соцсетях — «ВКонтакте» или «Одноклассниках»,
-          сообщается на сайте правительства.
-        </Typography>
-        <Typography>
-          {" "}
-          Согласно документу, госорганы обязаны публиковать отчёты о мероприятиях, комментарии по
-          актуальным вопросам, контактную информацию, включая номера телефонов и адреса электронной
-          почты. Требования вступят в силу с 1 декабря 2022 года.
-        </Typography>
-        <Typography>
-          {" "}
-          Распоряжение подготовили для реализации изменений в Федеральный закон «Об обеспечении
-          доступа к информации о деятельности государственных органов и органов местного
-          самоуправления», приятых в июле. В документе отмечается, что представители органов власти
-          могут выбрать любую соцсеть из перечня правительства.
-        </Typography>
-        <Typography>
-          {" "}
-          В начале сентября пресс-секретарь президента Дмитрий Песков заявил, что Владимир Путин не
-          планирует заводить аккаунты в популярных соцсетях. Об этом в Кремле рассказали после того,
-          как бывший премьер-министр Италии Сильвио Берлускони создал личную страницу в тиктоке.
-        </Typography>
+
+        {blocks.map((obj) => (
+          <Typography key={obj.id} dangerouslySetInnerHTML={{ __html: obj.data.text }}></Typography>
+        ))}
         <div>
           <Divider className="mt-20 mb-15" />
           <PostActions />

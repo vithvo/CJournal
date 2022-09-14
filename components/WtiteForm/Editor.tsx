@@ -1,16 +1,33 @@
-import React, { useEffect } from "react";
-import EditorJS from "@editorjs/editorjs";
+import React, { useMemo } from "react";
+import EditorJS, { OutputData } from "@editorjs/editorjs";
 
-export const Editor: React.FC = ({}) => {
-  useEffect(() => {
-    const editor = new EditorJS({ holder: "editor", placeholder: "Введите текст вашей статьи" });
-    return () => {
-      editor.isReady
-        .then(() => {
-          editor.destroy();
-        })
-        .catch((e) => console.error("ERROR editor cleanup", e));
-    };
+interface EditorProps {
+  onChange: (blocks: OutputData["blocks"]) => void;
+  initialBlocks?: OutputData["blocks"];
+}
+
+export const Editor: React.FC<EditorProps> = ({ onChange, initialBlocks }) => {
+  React.useEffect(() => {
+    const editor = new EditorJS({
+      holder: "editor",
+      data: {
+        blocks: initialBlocks || [],
+      },
+      placeholder: "Введите текст вашей статьи",
+      async onChange() {
+        const { blocks } = await editor.save();
+        onChange(blocks);
+      },
+    });
+
+    // return () => {
+    //   editor.isReady
+    //     .then(() => {
+    //       editor.destroy();
+    //     })
+    //     .catch((e) => console.error("ERROR editor cleanup", e));
+    // };
   }, []);
+
   return <div id="editor" />;
 };

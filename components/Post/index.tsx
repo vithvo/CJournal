@@ -6,25 +6,33 @@ import styles from "./Post.module.scss";
 import Link from "next/link";
 import { PostActions } from "../PostActions";
 
-export const Post: React.FC = () => {
+interface PostProps {
+  id: number;
+  title: string;
+  description: string;
+  imageUrl?: string;
+}
+
+export const Post: React.FC<PostProps> = ({ title, description, id, imageUrl }) => {
   return (
     <div className={styles.post}>
-      <Paper elevation={0} className="p-15" classes={{ root: styles.paper }}>
-        <Link href="/posts/1">
+      <Paper elevation={0} className="p-25" classes={{ root: styles.paper }}>
+        <Link href={`/posts/${id}`}>
           <Typography variant="h5" className={styles.title}>
-            55 стран за три года: моя работа бортпроводницей в религиозном Катаре
+            {title}
           </Typography>
         </Link>
-        <Typography className="mt-15 mb-15">
-          Отбор в компанию, сотни странных пассажиров и ноль друзей ирл.
-        </Typography>
+        <Typography className="mt-15 mb-15">{description}</Typography>
         <div className={styles.postImageRow}>
-          <Image
-            className={styles.postImage}
-            width={640}
-            height={500}
-            src="https://leonardo.osnova.io/48922d1f-4dde-596e-bf40-ea083ab0a914/-/preview/900/-/format/webp/"
-          />
+          {imageUrl && (
+            <Image
+              className={styles.postImage}
+              width={640}
+              height={500}
+              alt="Title"
+              src="https://leonardo.osnova.io/48922d1f-4dde-596e-bf40-ea083ab0a914/-/preview/900/-/format/webp/"
+            />
+          )}
         </div>
         <PostActions />
       </Paper>

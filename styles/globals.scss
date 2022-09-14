@@ -33,8 +33,13 @@ body {
 }
 
 .postRow {
+  max-width: 640px;
+  width: 100%;
+
   &--full {
+    max-width: 960px;
     width: 100%;
+    margin: 0 auto;
     justify-content: start;
   }
 }
@@ -49,5 +54,3 @@ input {
     border: none;
   }
 }
-
-

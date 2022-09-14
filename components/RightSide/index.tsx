@@ -8,9 +8,8 @@ import { CommentSide } from "./CommentSide";
 import styles from "./RightSide.module.scss";
 import clsx from "clsx";
 import { commetsItems } from "../../data";
-// import CommentPostProps from "../Comment";
 
-// const comments = [
+
 //   {
 //     id: 1,
 //     user: {

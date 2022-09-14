@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   SmsOutlined,
   NotificationsNone,
@@ -27,6 +27,13 @@ export const Header: React.FC = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    if (open && userData) {
+      setOpen(false);
+    }
+  }, [open, userData]);
+
   return (
     <Paper classes={{ root: styles.root }} elevation={0}>
       <div className={styles.headerLeft}>
@@ -54,13 +61,11 @@ export const Header: React.FC = () => {
         {userData ? (
           <>
             <Link href="/profile/1">
-              <Avatar
-                className={styles.headerAvatar}
-                alt="Avatar"
-                src="https://avatarko.ru/img/avatar/2/zhivotnye_igra_kot_1816.jpg"
-              />
+              <Avatar className={styles.headerAvatar} variant="rounded" alt="Avatar">
+                {userData.fullName.substr(0, 1)}
+              </Avatar>
             </Link>
-            <KeyboardArrowDown className={styles.headerAvatarIcon} />{" "}
+            <KeyboardArrowDown className={styles.headerAvatarIcon} />
           </>
         ) : (
           <div onClick={handleClickOpen} className={styles.headerAvatar}>

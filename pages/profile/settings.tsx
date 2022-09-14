@@ -6,7 +6,7 @@ import styles from "./Profile.module.scss";
 
 export default function Settings() {
   return (
-    <MainLayout contentFullWidth>
+    <MainLayout contentFullWidth hideComments>
       <div className={styles.settingsRow}>
         <Paper className="p-15" elevation={0} classes={{ root: styles.paper }}>
           <Typography className="mb-10" variant="h6">
@@ -17,7 +17,6 @@ export default function Settings() {
             fullWidth
             size="small"
             className="mb-20"
-      
             label="Отображаемое имя"
             variant="outlined"
           />
