@@ -6,10 +6,24 @@ type CreatePostDto = {
   title: string;
   body: OutputData["blocks"];
 };
+type SearchPostDto = {
+  title?: string;
+  body?: string;
+  views?: "DESC" | "ASC";
+  limit?: number;
+  take?: number;
+  tag?: string;
+};
 
 export const PostApi = (instance: AxiosInstance) => ({
   async getAll() {
     const { data } = await instance.get<PostProps[]>("/posts");
+    return data;
+  },
+  async search(query: SearchPostDto) {
+    const { data } = await instance.get<{ items: PostProps[]; total: number }>("/posts/search", {
+      params: query,
+    });
     return data;
   },
 

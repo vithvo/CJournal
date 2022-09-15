@@ -1,25 +1,20 @@
-import { Avatar, Button } from "@mui/material";
+import { Avatar, Button, Divider } from "@mui/material";
 import { purple } from "@mui/material/colors";
 import Link from "next/link";
 import React from "react";
+import { PostProps, ResponseUser } from "../../../utils/api/types";
 
 import styles from "./Comment.module.scss";
 
 interface CommentSideProps {
   text: string;
   id: number;
-  user: {
-    id: number;
-    fullName: string;
-    avatarUrl: string;
-  };
-  post: {
-    id: number;
-    title: string;
-  };
+  user: ResponseUser;
+  post: PostProps;
 }
 
 export const CommentSide: React.FC<CommentSideProps> = ({ user, text, post }) => {
+ 
   return (
     <div className={styles.commentItem}>
       <Link href={`/profile/${user.id}`}>
@@ -36,7 +31,7 @@ export const CommentSide: React.FC<CommentSideProps> = ({ user, text, post }) =>
         </Button>
       </Link>
       <div className={styles.commentContent}>{text}</div>
-      <Link href={`/posts/${user.id}`}>
+      <Link href={`/posts/${post.id}`}>
         <div className={styles.commentFooter}>{post.title}</div>
       </Link>
     </div>

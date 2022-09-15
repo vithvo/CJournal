@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { ChangeEventHandler, SyntheticEvent, useEffect, useState } from "react";
 import {
   SmsOutlined,
   NotificationsNone,
@@ -8,17 +8,22 @@ import {
   PersonOutlineRounded,
   KeyboardArrowDown,
 } from "@mui/icons-material";
-import { Avatar, Button, Paper } from "@mui/material";
+import { Avatar, Button, List, ListItem, ListItemButton, Paper } from "@mui/material";
 
 import styles from "./Header.module.scss";
 import Link from "next/link";
 import { AuthDialog } from "../AuthDialog";
 import { useAppSelector } from "../../redux/hooks";
 import { selectUserData } from "../../redux/slices/user";
+import { PostProps } from "../../utils/api/types";
+import { Api } from "../../utils/api";
+import { isPlainObject } from "@reduxjs/toolkit";
 
 export const Header: React.FC = () => {
   const userData = useAppSelector(selectUserData);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const [posts, setPosts] = useState<PostProps[]>([]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -34,6 +39,15 @@ export const Header: React.FC = () => {
     }
   }, [open, userData]);
 
+  const handleChangeInput: ChangeEventHandler<HTMLInputElement> = async (e) => {
+    setSearchValue(e.target.value);
+    try {
+      const { items } = await Api().post.search({ title: e.target.value });
+      setPosts(items);
+    } catch (error) {
+      console.warn(error);
+    }
+  };
   return (
     <Paper classes={{ root: styles.root }} elevation={0}>
       <div className={styles.headerLeft}>
@@ -47,7 +61,33 @@ export const Header: React.FC = () => {
       <div className={styles.postTop}>
         <div className={styles.searchBox}>
           <Search />
-          <input type="text" placeholder="Поиск" />
+          <input
+            value={searchValue}
+            onChange={handleChangeInput}
+            type="text"
+            placeholder="Поиск по названию статьи"
+          />
+          {posts.length > 0 && searchValue && (
+            <Paper className={styles.searchPopup}>
+              {posts.map((obj) => (
+                <Link key={obj.id} href={`/posts/${obj.id}`}>
+                  <List>
+                    <ListItem>
+                      <ListItemButton
+                        onClick={() => {
+                          setSearchValue("");
+                          setPosts([]);
+                        }}
+                        className={styles.searchPopupbutton}
+                      >
+                        {obj.title}
+                      </ListItemButton>
+                    </ListItem>
+                  </List>
+                </Link>
+              ))}
+            </Paper>
+          )}
         </div>
         <Link href="/write">
           <Button className={styles.headerPenButton} variant="contained">

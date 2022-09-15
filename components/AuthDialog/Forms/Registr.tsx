@@ -9,10 +9,9 @@ import { FormField } from "../../WtiteForm/FormField";
 import { RegistrSchema } from "../../../utils/validations";
 
 import styles from "../AuthDialog.module.scss";
-import { UserApi } from "../../../utils/api/user";
-import { CreateUserDto } from "../../../utils/api/types";
 import { useAppDispatch } from "../../../redux/hooks";
-import {  setUserData } from "../../../redux/slices/user";
+import { setUserData } from "../../../redux/slices/user";
+import { Api } from "../../../utils/api";
 
 interface RegistrProps {
   setFormTypeLogin: () => void;
@@ -22,13 +21,12 @@ interface RegistrProps {
 export const Registr: React.FC<RegistrProps> = ({ setFormTypeLogin, setFormTypeMain }) => {
   const dispatch = useAppDispatch();
 
-
   const form = useForm({ resolver: yupResolver(RegistrSchema), mode: "onChange" });
   const [errorMessage, setErrorMessage] = useState(false);
 
   const onSubmit = async (dto: any) => {
     try {
-      const data = await UserApi.registr(dto);
+      const data = await Api().user.registr(dto);
 
       setCookie(null, "token", data.token, {
         maxAge: 30 * 24 * 60 * 60,

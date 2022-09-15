@@ -56,9 +56,7 @@ export default function Profile() {
           </div>
         </Paper>
         <div className=" mt-30 d-flex justify-between">
-          <div className={styles.profilePost}>
-            <Post />
-          </div>
+          <div className={styles.profilePost}></div>
           <Paper style={{ width: 400, borderRadius: "8px" }} className="p-20 mb-20" elevation={0}>
             <b>Подписчики</b>
             <div className="d-flex mt-15">

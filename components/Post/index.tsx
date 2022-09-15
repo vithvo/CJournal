@@ -10,10 +10,9 @@ interface PostProps {
   id: number;
   title: string;
   description: string;
-  imageUrl?: string;
 }
 
-export const Post: React.FC<PostProps> = ({ title, description, id, imageUrl }) => {
+export const Post: React.FC<PostProps> = ({ title, description, id }) => {
   return (
     <div className={styles.post}>
       <Paper elevation={0} className="p-25" classes={{ root: styles.paper }}>
@@ -23,7 +22,7 @@ export const Post: React.FC<PostProps> = ({ title, description, id, imageUrl }) 
           </Typography>
         </Link>
         <Typography className="mt-15 mb-15">{description}</Typography>
-        <div className={styles.postImageRow}>
+        {/* <div className={styles.postImageRow}>
           {imageUrl && (
             <Image
               className={styles.postImage}
@@ -33,7 +32,7 @@ export const Post: React.FC<PostProps> = ({ title, description, id, imageUrl }) 
               src="https://leonardo.osnova.io/48922d1f-4dde-596e-bf40-ea083ab0a914/-/preview/900/-/format/webp/"
             />
           )}
-        </div>
+        </div> */}
         <PostActions />
       </Paper>
     </div>

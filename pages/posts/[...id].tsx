@@ -19,7 +19,7 @@ const Slug: NextPage<SlugProps> = ({ post }) => {
     <MainLayout contentFullWidth>
       <div className={styles.slugRow}>
         <FullPost title={post.title} blocks={post.body} />
-        <PostComments />
+        <PostComments postId={post.id} />
       </div>
     </MainLayout>
   );
@@ -27,9 +27,10 @@ const Slug: NextPage<SlugProps> = ({ post }) => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   try {
+ 
     const id = ctx.params?.id;
-    const post = await Api(ctx).post.getOne(+id);
-    console.log(post.body);
+    const post = await Api(ctx).post.getOne(+(id as string));
+
     return {
       props: { post },
     };

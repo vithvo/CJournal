@@ -20,19 +20,26 @@ import React from "react";
 import { MainLayout } from "../layuots/MainLayout";
 
 import styles from "./profile/Profile.module.scss";
+import { Api } from "../utils/api";
+import { NextPage } from "next";
+import { ResponseUser } from "../utils/api/types";
 
-export default function Settings() {
+interface RatingPageProps {
+  users: ResponseUser[];
+}
+
+const Rating: NextPage<RatingPageProps> = ({ users }) => {
   const [checked, setChecked] = useState(false);
   return (
-    <MainLayout contentFullWidth>
+    <MainLayout>
       <div className={styles.settingsRow}>
         <Paper className="pt-20 pl-20 pr-20 mb-20" elevation={0}>
           <Typography variant="h5" className="mb-10 fw-bold">
-            Рейтинг сообществ и блогов
+            Рейтинг активности пользователей
           </Typography>
-          <Typography>
-            Десять лучших авторов и комментаторов, а также администраторы первых десяти сообществ из
-            рейтинга по итогам месяца бесплатно получают Plus-аккаунт на месяц.
+          <Typography className="fw-normal">
+            На этой странице представлен рейтинг активности пользователей, оставивших больше всех
+            комментариев. <br /> Цена одного комментария - 3 балла!{" "}
           </Typography>
           <Tabs className="mt-20" value={0} indicatorColor="primary" textColor="primary">
             <Tab label="Месяц" />
@@ -51,28 +58,50 @@ export default function Settings() {
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-                <TableCell component="th" scope="row">
-                  <span className="mr-15">1</span>
-                  Алеша Попович
-                </TableCell>
-                <TableCell align="right">777</TableCell>
-                <TableCell align="right">
-                  <Button
-                    onClick={() => {
-                      setChecked(!checked);
-                    }}
-                    variant="contained"
-                    style={{ height: 42, minWidth: 42, width: 42, marginRight: 10 }}
-                  >
-                    {checked ? <Done style={{ fontSize: "20px", fill: "#2ea83a" }} /> : <Add />}
-                  </Button>
-                </TableCell>
-              </TableRow>
+              {users.map((obj, i) => (
+                <TableRow key={obj.id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                  <TableCell component="th" scope="row">
+                    <span className="mr-15">{i + 1}</span>
+                    {obj.fullName}
+                  </TableCell>
+                  <TableCell align="right">{obj.commentsCount * 3}</TableCell>
+                  <TableCell align="right">
+                    <Button
+                      onClick={() => {
+                        setChecked(!checked);
+                      }}
+                      variant="contained"
+                      style={{ height: 42, minWidth: 42, width: 42, marginRight: 10 }}
+                    >
+                      {checked ? <Done style={{ fontSize: "20px", fill: "#2ea83a" }} /> : <Add />}
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </Paper>
       </div>
     </MainLayout>
   );
-}
+};
+
+export const getServerSideProps = async () => {
+  try {
+    const users = await Api().user.getAll();
+    return {
+      props: {
+        users,
+      },
+    };
+  } catch (err) {
+    console.log(err);
+  }
+  return {
+    props: {
+      users: null,
+    },
+  };
+};
+
+export default Rating;

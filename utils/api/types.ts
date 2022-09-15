@@ -1,3 +1,4 @@
+import { Post } from "./../../components/Post/index";
 import { OutputData } from "@editorjs/editorjs";
 
 export type UserLoginDto = {
@@ -15,6 +16,7 @@ export type ResponseUser = {
   createdAt: string;
   email: string;
   fullName: string;
+  commentsCount: number;
   id: number;
   token: string;
   updatedAt: string;
@@ -30,4 +32,12 @@ export type PostProps = {
   views: number;
   user: ResponseUser;
   body: OutputData["blocks"];
+};
+export type CommentProps = {
+  id: number;
+  text: string;
+  post: PostProps;
+  user: ResponseUser;
+  createdAt: string;
+  updatedAt: string;
 };

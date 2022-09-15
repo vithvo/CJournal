@@ -20,7 +20,7 @@ const WritePage: NextPage<WritePageProps> = ({ post }) => {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   try {
     const id = ctx.params?.id;
-    const post = await Api(ctx).post.getOne(+id);
+    const post = await Api(ctx).post.getOne(+(id as string));
     const user = await Api(ctx).user.getMe();
 
     if (post.user.id !== user.id) {

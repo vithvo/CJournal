@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Button, Typography } from "@mui/material";
 import { ChevronRightOutlined, CommentsDisabled } from "@mui/icons-material";
@@ -7,46 +7,17 @@ import { CommentSide } from "./CommentSide";
 
 import styles from "./RightSide.module.scss";
 import clsx from "clsx";
-import { commetsItems } from "../../data";
 
-
-//   {
-//     id: 1,
-//     user: {
-//       fullname: "Вася Пупкин",
-//       avatarUrl: "https://thumbs.dreamstime.com/b/cat-avatar-illustration-cartoon-45383590.jpg",
-//     },
-//     text: "Теперь, каждое рабочее утро, после кровати, я перекладываюсь туда спать ещё на часок. Ну и…",
-//     post: {
-//       title: "Какая у вас дома ванна?",
-//     },
-//   },
-//   {
-//     id: 2,
-//     user: {
-//       fullname: "Вася Пупкин",
-//       avatarUrl: "https://thumbs.dreamstime.com/b/cat-avatar-illustration-cartoon-45383590.jpg",
-//     },
-//     text: "Теперь, каждое рабочее утро, после кровати, я перекладываюсь туда спать ещё на часок. Ну и…",
-//     post: {
-//       title: "Какая у вас дома ванна?",
-//     },
-//   },
-//   {
-//     id: 3,
-//     user: {
-//       fullname: "Вася Пупкин",
-//       avatarUrl: "https://thumbs.dreamstime.com/b/cat-avatar-illustration-cartoon-45383590.jpg",
-//     },
-//     text: "Теперь, каждое рабочее утро, после кровати, я перекладываюсь туда спать ещё на часок. Ну и…",
-//     post: {
-//       title: "Какая у вас дома ванна?",
-//     },
-//   },
-// ];
+import { useComments } from "../../hooks/useComments";
+import { CommentProps } from "../../utils/api/types";
 
 export const RightSide: React.FC = ({}) => {
   const [visible, setVisible] = useState(true);
+  const { comments, setComments } = useComments();
+
+  const onAddComment = (obj: CommentProps) => {
+    setComments((prev) => [...prev, obj]);
+  };
 
   return (
     <div className={clsx(styles.rightSideRow, !visible && styles.rotate)}>
@@ -57,10 +28,10 @@ export const RightSide: React.FC = ({}) => {
         </Button>
         {visible && (
           <div className={styles.rightSideContent}>
-            {commetsItems.popular.map((item) => (
+            {comments.map((item) => (
               <CommentSide
-                key={item.id}
                 {...item}
+                key={item.id}
                 user={item.user}
                 text={item.text}
                 post={item.post}

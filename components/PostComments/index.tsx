@@ -1,20 +1,32 @@
 import { Divider, Paper, Tab, Tabs, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AddCommentForm } from "../AddCommentForm";
 import { Comment } from "../Comment";
 
-import { commetsItems } from "../../data";
-
 import styles from "./PostComments.module.scss";
+import { Api } from "../../utils/api";
+import { CommentProps } from "../../utils/api/types";
+import { selectUserData } from "../../redux/slices/user";
+import { useAppSelector } from "../../redux/hooks";
+import { useComments } from "../../hooks/useComments";
 
-export const PostComments: React.FC = () => {
+export interface PostCommentProps {
+  postId: number;
+}
+
+export const PostComments: React.FC<PostCommentProps> = ({ postId }) => {
+  const userData = useAppSelector(selectUserData);
   const [activeTab, setActiveTab] = useState(0);
-  const [datetime, setDatetime] = useState("");
-  const comments = commetsItems[activeTab ? "new" : "popular"];
+  const { comments, setComments } = useComments(postId);
 
-  React.useEffect(() => {
-    setDatetime(new Date().toLocaleString());
-  }, []);
+  const onAddComment = (obj: CommentProps) => {
+    setComments((prev) => [...prev, obj]);
+  };
+
+  const onRemoveComment = (id: number) => {
+    setComments((prev) => prev.filter((obj) => obj.id !== id));
+  };
+
   return (
     <Paper elevation={0} className="mt-40 pt-30 pr-30 pl-30">
       <Typography variant="h6">42 комментария</Typography>
@@ -30,11 +42,24 @@ export const PostComments: React.FC = () => {
       </Tabs>
       <Divider className={styles.divider} />
 
-      <AddCommentForm />
+      {userData && <AddCommentForm onAdd={onAddComment} postId={postId} />}
 
-      {comments.map((obj) => (
-        <Comment key={obj.id} {...obj} user={obj.user} text={obj.text} createdAt={datetime} />
-      ))}
+      {comments.length ? (
+        comments.map((obj) => (
+          <Comment
+            key={obj.id}
+            {...obj}
+            id={obj.id}
+            user={obj.user}
+            text={obj.text}
+            createdAt={obj.createdAt}
+            currentUserId={userData?.id}
+            onRemove={onRemoveComment}
+          />
+        ))
+      ) : (
+        <div className="pb-30 text-center">Пока нет комментариев, напиши первым ...</div>
+      )}
     </Paper>
   );
 };

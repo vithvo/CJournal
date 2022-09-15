@@ -8,7 +8,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   img {
     height: 32px;
     width: 32px;
@@ -30,7 +30,10 @@
 .titleText {
   display: flex;
   flex-direction: column;
-  position: relative;
+  justify-content: space-around;
+  b {
+    margin-bottom: 2px;
+  }
 }
 
 .button {
