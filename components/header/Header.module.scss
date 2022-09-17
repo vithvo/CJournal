@@ -39,7 +39,7 @@
   display: flex;
   max-width: 320px;
   width: 100%;
-  justify-content: end;
+  justify-content: flex-end;
   padding-right: 38px;
 
   svg {
@@ -152,7 +152,7 @@
   flex-direction: column;
   position: absolute;
   top: 110%;
- 
+
   width: 100%;
   margin: auto 0 !important;
   align-items: center !important;

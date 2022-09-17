@@ -17,9 +17,11 @@ export const Post: React.FC<PostProps> = ({ title, description, id }) => {
     <div className={styles.post}>
       <Paper elevation={0} className="p-25" classes={{ root: styles.paper }}>
         <Link href={`/posts/${id}`}>
-          <Typography variant="h5" className={styles.title}>
-            {title}
-          </Typography>
+          <a>
+            <Typography variant="h5" className={styles.title}>
+              {title}
+            </Typography>
+          </a>
         </Link>
         <Typography className="mt-15 mb-15">{description}</Typography>
         {/* <div className={styles.postImageRow}>

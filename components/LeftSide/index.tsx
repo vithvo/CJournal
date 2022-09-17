@@ -28,10 +28,12 @@ export const LeftSide = () => {
           {menu.map((obj) => (
             <li key={obj.path}>
               <Link href={obj.path}>
-                <Button variant={router.asPath === obj.path ? "contained" : "text"}>
-                  {obj.icon}
-                  {obj.text}
-                </Button>
+                <a>
+                  <Button variant={router.asPath === obj.path ? "contained" : "text"}>
+                    {obj.icon}
+                    {obj.text}
+                  </Button>
+                </a>
               </Link>
             </li>
           ))}

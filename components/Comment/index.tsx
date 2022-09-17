@@ -51,15 +51,17 @@ export const Comment: React.FC<CommentPostProps> = ({
   return (
     <div className={styles.row}>
       <Link href={`/posts/${user.id}`}>
-        <div className={styles.title}>
-          <Avatar variant="circular" alt="Avatar" className="mr-10">
-            {user.fullName && user.fullName.slice(0, 1)}
-          </Avatar>
-          <div className={styles.titleText}>
-            <b>{user.fullName}</b>
-            <span>{new Date(createdAt).toLocaleString()}</span>
+        <a>
+          <div className={styles.title}>
+            <Avatar variant="circular" alt="Avatar" className="mr-10">
+              {user.fullName && user.fullName.slice(0, 1)}
+            </Avatar>
+            <div className={styles.titleText}>
+              <b>{user.fullName}</b>
+              <span>{new Date(createdAt).toLocaleString()}</span>
+            </div>
           </div>
-        </div>
+        </a>
       </Link>
       <Typography className={styles.text}>{text}</Typography>
       <div className="d-flex align-center">

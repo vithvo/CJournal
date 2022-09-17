@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React from "react";
 
-import { Header } from "../components/Header";
+import { Header } from "../components/header";
 import { LeftSide } from "../components/LeftSide";
 import { RightSide } from "../components/RightSide";
 

@@ -37,12 +37,14 @@ export default function Profile() {
             </div>
             <div>
               <Link href="/profile/settings">
-                <Button
-                  style={{ height: 42, minWidth: 45, width: 45, marginRight: 10 }}
-                  variant="contained"
-                >
-                  <SettingsOutlined />
-                </Button>
+                <a>
+                  <Button
+                    style={{ height: 42, minWidth: 45, width: 45, marginRight: 10 }}
+                    variant="contained"
+                  >
+                    <SettingsOutlined />
+                  </Button>
+                </a>
               </Link>
               <Button
                 style={{ height: 42, maxWidth: 137, backgroundColor: "#4683D9", color: "#fff" }}

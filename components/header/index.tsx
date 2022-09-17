@@ -55,7 +55,9 @@ export const Header: React.FC = () => {
           <MenuOutlined />
         </Button>
         <Link href="/">
-          <img className={styles.headerLogo} src="/static/logo.svg" alt="LOGO" />
+          <a>
+            <img className={styles.headerLogo} src="/static/logo.svg" alt="LOGO" />
+          </a>
         </Link>
       </div>
       <div className={styles.postTop}>
@@ -71,28 +73,32 @@ export const Header: React.FC = () => {
             <Paper className={styles.searchPopup}>
               {posts.map((obj) => (
                 <Link key={obj.id} href={`/posts/${obj.id}`}>
-                  <List>
-                    <ListItem>
-                      <ListItemButton
-                        onClick={() => {
-                          setSearchValue("");
-                          setPosts([]);
-                        }}
-                        className={styles.searchPopupbutton}
-                      >
-                        {obj.title}
-                      </ListItemButton>
-                    </ListItem>
-                  </List>
+                  <a>
+                    <List>
+                      <ListItem>
+                        <ListItemButton
+                          onClick={() => {
+                            setSearchValue("");
+                            setPosts([]);
+                          }}
+                          className={styles.searchPopupbutton}
+                        >
+                          {obj.title}
+                        </ListItemButton>
+                      </ListItem>
+                    </List>
+                  </a>
                 </Link>
               ))}
             </Paper>
           )}
         </div>
         <Link href="/write">
-          <Button className={styles.headerPenButton} variant="contained">
-            <AddOutlined /> Создать
-          </Button>
+          <a>
+            <Button className={styles.headerPenButton} variant="contained">
+              <AddOutlined /> Создать
+            </Button>
+          </a>
         </Link>
       </div>
       <div className={styles.headerRight}>
@@ -101,9 +107,11 @@ export const Header: React.FC = () => {
         {userData ? (
           <>
             <Link href="/profile/1">
-              <Avatar className={styles.headerAvatar} variant="rounded" alt="Avatar">
-                {userData.fullName.substr(0, 1)}
-              </Avatar>
+              <a>
+                <Avatar className={styles.headerAvatar} variant="rounded" alt="Avatar">
+                  {userData.fullName.substr(0, 1)}
+                </Avatar>
+              </a>
             </Link>
             <KeyboardArrowDown className={styles.headerAvatarIcon} />
           </>

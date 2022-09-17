@@ -14,25 +14,28 @@ interface CommentSideProps {
 }
 
 export const CommentSide: React.FC<CommentSideProps> = ({ user, text, post }) => {
- 
   return (
     <div className={styles.commentItem}>
       <Link href={`/profile/${user.id}`}>
-        <Button className={styles.commentHeader}>
-          <Avatar
-            className={styles.commentAvarar}
-            sx={{ bgcolor: purple[400] }}
-            variant="rounded"
-            alt="Remy Sharp"
-          >
-            {user.fullName.substr(0, 1)}
-          </Avatar>
-          <p>{user.fullName}</p>
-        </Button>
+        <a>
+          <Button className={styles.commentHeader}>
+            <Avatar
+              className={styles.commentAvarar}
+              sx={{ bgcolor: purple[400] }}
+              variant="rounded"
+              alt="Remy Sharp"
+            >
+              {user.fullName.substr(0, 1)}
+            </Avatar>
+            <p>{user.fullName}</p>
+          </Button>
+        </a>
       </Link>
       <div className={styles.commentContent}>{text}</div>
       <Link href={`/posts/${post.id}`}>
-        <div className={styles.commentFooter}>{post.title}</div>
+        <a>
+          <div className={styles.commentFooter}>{post.title}</div>
+        </a>
       </Link>
     </div>
   );

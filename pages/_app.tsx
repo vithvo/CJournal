@@ -7,10 +7,7 @@ import { theme } from "../theme";
 import { store, wrapper } from "../redux/store";
 import "macro-css";
 import "../styles/globals.scss";
-import { parseCookies } from "nookies";
-import { UserApi } from "../utils/api/user";
 import { setUserData } from "../redux/slices/user";
-import { Component } from "react";
 import { Api } from "../utils/api";
 
 function App({ Component, pageProps }: AppProps) {
