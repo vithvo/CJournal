@@ -1,6 +1,6 @@
 # HELLO ! ! !
 
-Let's honor the memory of the well-known news site TJournal in Russia by poking buttons in its modest copy [CJournal](http://82.148.19.223:3000) <-- Click here
+## Let's honor the memory of the well-known news site TJournal in Russia by poking buttons in its modest copy [CJournal](http://82.148.19.223:3000) <-- Click here
 
 ### First of all:
 - for comfortable use, you must auth to the site (u can use any name, password and email);
