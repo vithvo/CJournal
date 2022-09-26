@@ -29,6 +29,7 @@ Fron-end:
 - Mui, EditorJs;
 - Axios, yup;
 - Scss module
+
 Back-end:
 - NestJS;
 - PostgreSQL;
